@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.aop.framework.AopContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +35,7 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu, Integer, MenuDao> imp
 	@Override
 	public void drag(int sourceId, int targetId) {
 
-		Menu menu = super.get(sourceId);
+		Menu menu = ((MenuService) AopContext.currentProxy()).get(sourceId);
 		menu.setParentId(targetId == 0 ? null : targetId);
 		super.saveOrUpdate(menu);
 	}

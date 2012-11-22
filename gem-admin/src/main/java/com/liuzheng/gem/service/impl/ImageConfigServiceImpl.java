@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +30,7 @@ public class ImageConfigServiceImpl extends BaseServiceImpl<ImageConfig, Integer
 	@Override
 	public ImageConfig findByCode(String code) {
 
-		List<ImageConfig> list = super.find("from ImageConfig c where c.configCode=?", code);
+		List<ImageConfig> list = ((ImageConfigService) AopContext.currentProxy()).find("from ImageConfig c where c.configCode=?", code);
 		return CollectionUtils.isEmpty(list) ? null : list.get(0);
 	}
 

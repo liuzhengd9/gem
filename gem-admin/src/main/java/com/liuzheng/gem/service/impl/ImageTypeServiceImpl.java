@@ -2,6 +2,7 @@ package com.liuzheng.gem.service.impl;
 
 import javax.annotation.Resource;
 
+import org.springframework.aop.framework.AopContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,7 +39,7 @@ public class ImageTypeServiceImpl extends BaseServiceImpl<ImageType, Integer, Im
 				throw new ServiceException("该图片类型正在使用，无法删除！");
 			}
 		}
-		super.delete(ids);
+		((ImageTypeService) AopContext.currentProxy()).delete(ids);
 	}
 
 }
