@@ -257,6 +257,21 @@
 			<artifactId>spring-data-redis</artifactId>
 			<version>1.0.2.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.fastupload</groupId>
+			<artifactId>fastupload-core</artifactId>
+			<version>0.4.7</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.struts</groupId>
+					<artifactId>struts2-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.opensymphony</groupId>
+					<artifactId>xwork</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>gem</finalName>
