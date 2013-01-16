@@ -10,8 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "user_detail")
+@JsonIgnoreProperties(value = { "user" })
 public class UserDetail extends ParentEntity {
 
 	private static final long serialVersionUID = 2880674651479632944L;
